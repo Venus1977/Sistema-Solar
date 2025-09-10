@@ -149,6 +149,8 @@
             border-radius: 50%;
             box-shadow: 0 0 50px #ffeb3b;
             animation: rotate 10s linear infinite;
+            cursor: pointer;
+            z-index: 100;
         }
 
         .planet-orbit {
@@ -158,6 +160,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             transform: translate(-50%, -50%);
+            pointer-events: none;
         }
 
         .planet {
@@ -167,23 +170,79 @@
             transition: all 0.3s ease;
             animation: orbit linear infinite;
             transform-origin: center;
+            z-index: 50;
+            pointer-events: all;
         }
 
         .planet:hover {
-            transform: scale(1.3);
-            z-index: 100;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+            transform: scale(2) !important;
+            z-index: 200 !important;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8) !important;
+            animation-play-state: paused;
+        }
+
+        .planet:active {
+            transform: scale(2.2) !important;
         }
 
         /* Planetas específicos */
-        .mercury { width: 15px; height: 15px; background: radial-gradient(circle, #8c7853, #5a5a5a); }
-        .venus { width: 18px; height: 18px; background: radial-gradient(circle, #ffc649, #ff8f00); }
-        .earth { width: 20px; height: 20px; background: radial-gradient(circle, #6b93d6, #2e7d32); }
-        .mars { width: 17px; height: 17px; background: radial-gradient(circle, #cd5c5c, #8b0000); }
-        .jupiter { width: 35px; height: 35px; background: radial-gradient(circle, #d8ca9d, #b8860b); }
-        .saturn { width: 30px; height: 30px; background: radial-gradient(circle, #fad5a5, #daa520); position: relative; }
-        .uranus { width: 25px; height: 25px; background: radial-gradient(circle, #4fd0e7, #0277bd); }
-        .neptune { width: 24px; height: 24px; background: radial-gradient(circle, #4b70dd, #1565c0); }
+        .mercury { 
+            width: 20px; 
+            height: 20px; 
+            background: radial-gradient(circle, #8c7853, #5a5a5a);
+            min-width: 20px;
+            min-height: 20px;
+        }
+        .venus { 
+            width: 24px; 
+            height: 24px; 
+            background: radial-gradient(circle, #ffc649, #ff8f00);
+            min-width: 24px;
+            min-height: 24px;
+        }
+        .earth { 
+            width: 26px; 
+            height: 26px; 
+            background: radial-gradient(circle, #6b93d6, #2e7d32);
+            min-width: 26px;
+            min-height: 26px;
+        }
+        .mars { 
+            width: 22px; 
+            height: 22px; 
+            background: radial-gradient(circle, #cd5c5c, #8b0000);
+            min-width: 22px;
+            min-height: 22px;
+        }
+        .jupiter { 
+            width: 45px; 
+            height: 45px; 
+            background: radial-gradient(circle, #d8ca9d, #b8860b);
+            min-width: 45px;
+            min-height: 45px;
+        }
+        .saturn { 
+            width: 40px; 
+            height: 40px; 
+            background: radial-gradient(circle, #fad5a5, #daa520); 
+            position: relative;
+            min-width: 40px;
+            min-height: 40px;
+        }
+        .uranus { 
+            width: 32px; 
+            height: 32px; 
+            background: radial-gradient(circle, #4fd0e7, #0277bd);
+            min-width: 32px;
+            min-height: 32px;
+        }
+        .neptune { 
+            width: 30px; 
+            height: 30px; 
+            background: radial-gradient(circle, #4b70dd, #1565c0);
+            min-width: 30px;
+            min-height: 30px;
+        }
 
         .saturn::after {
             content: '';
@@ -191,10 +250,11 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 50px;
-            height: 2px;
+            width: 60px;
+            height: 3px;
             background: rgba(255, 255, 255, 0.4);
             border-radius: 50%;
+            pointer-events: none;
         }
 
         @keyframes rotate {
@@ -605,6 +665,27 @@
             transform: translateY(-2px);
         }
 
+        /* Indicador de clique */
+        .click-indicator {
+            position: absolute;
+            background: rgba(78, 205, 196, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 300;
+            animation: fadeInOut 2s ease-out;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(10px); }
+            20% { opacity: 1; transform: translateY(0); }
+            80% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-10px); }
+        }
+
         /* Responsivo */
         @media (max-width: 768px) {
             .game-title {
@@ -669,52 +750,53 @@
         <!-- Seção Planetas -->
         <div id="planets" class="section active">
             <div class="solar-system" id="solarSystem">
-                <div class="sun" onclick="showPlanetInfo('sol')"></div>
+                <div class="sun" onclick="showPlanetInfo('sol')" title="Clica no Sol!"></div>
                 
                 <!-- Órbitas e planetas -->
                 <div class="planet-orbit" style="width: 120px; height: 120px;">
-                    <div class="planet mercury" onclick="showPlanetInfo('mercurio')" 
+                    <div class="planet mercury" onclick="showPlanetInfo('mercurio')" title="Clica em Mercúrio!"
                          style="--orbit-radius: 60px; animation-duration: 8s;"></div>
                 </div>
                 
                 <div class="planet-orbit" style="width: 160px; height: 160px;">
-                    <div class="planet venus" onclick="showPlanetInfo('venus')" 
+                    <div class="planet venus" onclick="showPlanetInfo('venus')" title="Clica em Vénus!"
                          style="--orbit-radius: 80px; animation-duration: 12s;"></div>
                 </div>
                 
                 <div class="planet-orbit" style="width: 200px; height: 200px;">
-                    <div class="planet earth" onclick="showPlanetInfo('terra')" 
+                    <div class="planet earth" onclick="showPlanetInfo('terra')" title="Clica na Terra!"
                          style="--orbit-radius: 100px; animation-duration: 16s;"></div>
                 </div>
                 
                 <div class="planet-orbit" style="width: 240px; height: 240px;">
-                    <div class="planet mars" onclick="showPlanetInfo('marte')" 
+                    <div class="planet mars" onclick="showPlanetInfo('marte')" title="Clica em Marte!"
                          style="--orbit-radius: 120px; animation-duration: 20s;"></div>
                 </div>
                 
                 <div class="planet-orbit" style="width: 320px; height: 320px;">
-                    <div class="planet jupiter" onclick="showPlanetInfo('jupiter')" 
+                    <div class="planet jupiter" onclick="showPlanetInfo('jupiter')" title="Clica em Júpiter!"
                          style="--orbit-radius: 160px; animation-duration: 28s;"></div>
                 </div>
                 
                 <div class="planet-orbit" style="width: 380px; height: 380px;">
-                    <div class="planet saturn" onclick="showPlanetInfo('saturno')" 
+                    <div class="planet saturn" onclick="showPlanetInfo('saturno')" title="Clica em Saturno!"
                          style="--orbit-radius: 190px; animation-duration: 36s;"></div>
                 </div>
                 
                 <div class="planet-orbit" style="width: 440px; height: 440px;">
-                    <div class="planet uranus" onclick="showPlanetInfo('urano')" 
+                    <div class="planet uranus" onclick="showPlanetInfo('urano')" title="Clica em Urano!"
                          style="--orbit-radius: 220px; animation-duration: 44s;"></div>
                 </div>
                 
                 <div class="planet-orbit" style="width: 500px; height: 500px;">
-                    <div class="planet neptune" onclick="showPlanetInfo('neptuno')" 
+                    <div class="planet neptune" onclick="showPlanetInfo('neptuno')" title="Clica em Neptuno!"
                          style="--orbit-radius: 250px; animation-duration: 52s;"></div>
                 </div>
             </div>
             
             <div style="text-align: center; margin-top: 20px;">
-                <p>🖱️ Clica nos planetas para descobrires informações fascinantes!</p>
+                <p>🖱️ <strong>Clica nos planetas para descobrires informações fascinantes!</strong></p>
+                <p style="margin-top: 10px; opacity: 0.8;">💡 Dica: Os planetas ficam maiores quando passas o rato por cima!</p>
             </div>
         </div>
 
@@ -1206,11 +1288,32 @@
             event.target.classList.add('active');
         }
 
+        // Mostrar indicador de clique
+        function showClickIndicator(element, planetName) {
+            const indicator = document.createElement('div');
+            indicator.className = 'click-indicator';
+            indicator.textContent = `Clicaste em ${planetName}! 🪐`;
+            
+            const rect = element.getBoundingClientRect();
+            indicator.style.left = rect.left + rect.width/2 - 50 + 'px';
+            indicator.style.top = rect.top - 30 + 'px';
+            
+            document.body.appendChild(indicator);
+            
+            setTimeout(() => {
+                indicator.remove();
+            }, 2000);
+        }
+
         // Mostrar informações do planeta
         function showPlanetInfo(planetKey) {
             const planet = planetData[planetKey];
             const modal = document.getElementById('planetModal');
             const info = document.getElementById('planetInfo');
+            
+            // Mostrar indicador visual
+            const planetElement = event.target;
+            showClickIndicator(planetElement, planet.name);
             
             // Adicionar planeta visitado
             if (!gameState.planetsVisited.includes(planetKey)) {
@@ -1609,6 +1712,51 @@
             }
         }
 
+        // Melhorar detecção de cliques nos planetas
+        document.addEventListener('DOMContentLoaded', function() {
+            // Adicionar event listeners melhorados para os planetas
+            const planets = document.querySelectorAll('.planet, .sun');
+            
+            planets.forEach(planet => {
+                // Melhorar área de clique
+                planet.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(2)';
+                    this.style.zIndex = '200';
+                    this.style.animationPlayState = 'paused';
+                });
+                
+                planet.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                    this.style.zIndex = '';
+                    this.style.animationPlayState = 'running';
+                });
+                
+                // Garantir que o clique funciona
+                planet.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Determinar qual planeta foi clicado
+                    let planetKey = 'sol'; // default
+                    
+                    if (this.classList.contains('mercury')) planetKey = 'mercurio';
+                    else if (this.classList.contains('venus')) planetKey = 'venus';
+                    else if (this.classList.contains('earth')) planetKey = 'terra';
+                    else if (this.classList.contains('mars')) planetKey = 'marte';
+                    else if (this.classList.contains('jupiter')) planetKey = 'jupiter';
+                    else if (this.classList.contains('saturn')) planetKey = 'saturno';
+                    else if (this.classList.contains('uranus')) planetKey = 'urano';
+                    else if (this.classList.contains('neptune')) planetKey = 'neptuno';
+                    
+                    // Chamar função com contexto correto
+                    const originalEvent = window.event;
+                    window.event = e;
+                    showPlanetInfo(planetKey);
+                    window.event = originalEvent;
+                });
+            });
+        });
+
         // Controlos por teclado
         document.addEventListener('keydown', function(event) {
             if (!gameState.currentMission) return;
@@ -1682,5 +1830,5 @@
             loadQuestion();
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97ceb658a2372186',t:'MTc1NzUwNTA3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97cedd766390ec97',t:'MTc1NzUwNjY3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
