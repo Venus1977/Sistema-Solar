@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🪐 Solar System Explorer - README</title>
+    <title>README - Solar System Explorer</title>
     <style>
         * {
             margin: 0;
@@ -24,106 +24,101 @@
             margin: 0 auto;
             background: white;
             border-radius: 20px;
-            padding: 40px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
         }
 
         .header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 3px solid #4ecdc4;
-        }
-
-        .title {
-            font-size: 3em;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            font-size: 1.3em;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .badges {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            background: linear-gradient(45deg, #4ecdc4, #2ecc71);
+            background: linear-gradient(45deg, #4ecdc4, #45b7d1);
             color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: bold;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
         }
 
         .section {
             margin-bottom: 40px;
         }
 
-        .section-title {
-            font-size: 2em;
+        .section h2 {
             color: #4ecdc4;
+            font-size: 2em;
             margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            border-bottom: 3px solid #4ecdc4;
+            padding-bottom: 10px;
         }
 
-        .section-content {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 15px;
-            border-left: 5px solid #4ecdc4;
+        .section h3 {
+            color: #45b7d1;
+            font-size: 1.5em;
+            margin: 25px 0 15px 0;
         }
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
-            margin-top: 20px;
+            margin: 20px 0;
         }
 
         .feature-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid #e9ecef;
-            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #4ecdc4;
+            transition: transform 0.3s ease;
         }
 
         .feature-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border-color: #4ecdc4;
         }
 
         .feature-icon {
             font-size: 2.5em;
-            text-align: center;
             margin-bottom: 15px;
+            display: block;
         }
 
         .feature-title {
-            font-size: 1.2em;
+            font-size: 1.3em;
             font-weight: bold;
             color: #333;
             margin-bottom: 10px;
-            text-align: center;
         }
 
         .feature-description {
             color: #666;
-            text-align: center;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .tech-badge {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
         }
 
         .code-block {
@@ -132,29 +127,28 @@
             padding: 20px;
             border-radius: 10px;
             font-family: 'Courier New', monospace;
-            overflow-x: auto;
             margin: 15px 0;
+            overflow-x: auto;
         }
 
         .installation-steps {
-            counter-reset: step-counter;
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
         }
 
         .step {
-            counter-increment: step-counter;
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 15px;
             background: white;
-            padding: 20px;
-            margin: 15px 0;
             border-radius: 10px;
-            border-left: 5px solid #4ecdc4;
-            position: relative;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
-        .step::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: -15px;
-            top: 20px;
+        .step-number {
             background: #4ecdc4;
             color: white;
             width: 30px;
@@ -164,436 +158,485 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
         }
 
         .step-title {
             font-weight: bold;
+            margin-bottom: 5px;
             color: #333;
-            margin-bottom: 10px;
         }
 
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .tech-item {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .screenshot-grid {
+        .controls-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
         }
 
-        .screenshot {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            height: 150px;
+        .control-item {
+            background: #f8f9fa;
+            padding: 15px;
             border-radius: 10px;
+            border-left: 4px solid #4ecdc4;
+        }
+
+        .control-key {
+            background: #333;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        .mission-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .mission-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3em;
-            transition: transform 0.3s ease;
         }
 
-        .screenshot:hover {
-            transform: scale(1.05);
+        .mission-icon {
+            font-size: 2em;
+            margin-right: 20px;
         }
 
-        .contact-info {
-            background: linear-gradient(135deg, #4ecdc4, #2ecc71);
+        .mission-details h4 {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .mission-details p {
+            opacity: 0.9;
+        }
+
+        .footer {
+            background: #2d3748;
             color: white;
             padding: 30px;
-            border-radius: 15px;
             text-align: center;
         }
 
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .contact-link {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .contact-link:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .toc {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-
-        .toc-title {
-            font-size: 1.3em;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #333;
-        }
-
-        .toc-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .toc-item {
-            margin: 8px 0;
-        }
-
-        .toc-link {
+        .footer a {
             color: #4ecdc4;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
         }
 
-        .toc-link:hover {
-            color: #2ecc71;
+        .footer a:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
-            .readme-container {
-                padding: 20px;
-            }
-
-            .title {
+            .header h1 {
                 font-size: 2em;
             }
-
-            .section-title {
-                font-size: 1.5em;
+            
+            .content {
+                padding: 20px;
             }
-
-            .badges {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .tech-stack {
-                justify-content: center;
-            }
-
-            .contact-links {
-                flex-direction: column;
-                align-items: center;
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
     <div class="readme-container">
-        <!-- Header -->
         <div class="header">
-            <div class="title">🪐 Solar System Explorer</div>
-            <div class="subtitle">Interactive Educational Space Game</div>
-            <div class="badges">
-                <span class="badge">🎮 Educational Game</span>
-                <span class="badge">🌟 Interactive</span>
-                <span class="badge">📱 Responsive</span>
-                <span class="badge">🚀 Space Theme</span>
+            <h1>🪐 Solar System Explorer</h1>
+            <p>An Interactive Educational Space Game</p>
+        </div>
+
+        <div class="content">
+            <!-- Overview Section -->
+            <div class="section">
+                <h2>🌟 Overview</h2>
+                <p>Solar System Explorer is an engaging, educational web-based game designed to teach users about our solar system through interactive exploration, missions, and quizzes. Built with modern web technologies, it provides an immersive learning experience suitable for students, educators, and space enthusiasts of all ages.</p>
             </div>
-        </div>
 
-        <!-- Table of Contents -->
-        <div class="toc">
-            <div class="toc-title">📋 Table of Contents</div>
-            <ul class="toc-list">
-                <li class="toc-item"><a href="#overview" class="toc-link">🌟 Overview</a></li>
-                <li class="toc-item"><a href="#features" class="toc-link">✨ Features</a></li>
-                <li class="toc-item"><a href="#installation" class="toc-link">🚀 Installation</a></li>
-                <li class="toc-item"><a href="#usage" class="toc-link">🎮 How to Play</a></li>
-                <li class="toc-item"><a href="#technology" class="toc-link">💻 Technology Stack</a></li>
-                <li class="toc-item"><a href="#screenshots" class="toc-link">📸 Screenshots</a></li>
-                <li class="toc-item"><a href="#contributing" class="toc-link">🤝 Contributing</a></li>
-                <li class="toc-item"><a href="#contact" class="toc-link">📞 Contact</a></li>
-            </ul>
-        </div>
-
-        <!-- Overview -->
-        <div class="section" id="overview">
-            <div class="section-title">🌟 Overview</div>
-            <div class="section-content">
-                <p><strong>Solar System Explorer</strong> is an interactive educational web game designed to teach players about our solar system in an engaging and fun way. The game combines beautiful 3D animations, interactive missions, educational quizzes, and scientific tools to create an immersive learning experience.</p>
-                
-                <p>Perfect for students, educators, and space enthusiasts of all ages, this game makes learning about astronomy exciting and accessible. Players can explore planets, complete space missions, test their knowledge with quizzes, and unlock achievements as they journey through our solar system.</p>
-            </div>
-        </div>
-
-        <!-- Features -->
-        <div class="section" id="features">
-            <div class="section-title">✨ Features</div>
-            <div class="section-content">
+            <!-- Features Section -->
+            <div class="section">
+                <h2>✨ Features</h2>
                 <div class="feature-grid">
                     <div class="feature-card">
-                        <div class="feature-icon">🪐</div>
-                        <div class="feature-title">Interactive Solar System</div>
-                        <div class="feature-description">3D animated solar system with clickable planets and detailed information</div>
+                        <span class="feature-icon">🪐</span>
+                        <div class="feature-title">Interactive Planet Explorer</div>
+                        <div class="feature-description">Click on planets to discover detailed information, facts, and characteristics of each celestial body in our solar system.</div>
                     </div>
                     
                     <div class="feature-card">
-                        <div class="feature-icon">🚀</div>
+                        <span class="feature-icon">🚀</span>
                         <div class="feature-title">Space Missions</div>
-                        <div class="feature-description">5 exciting missions including Apollo, Mars exploration, and Voyager journey</div>
+                        <div class="feature-description">Complete 5 unique missions including Apollo moon landing, Mars exploration, Voyager navigation, Jupiter orbit, and Saturn rings traversal.</div>
                     </div>
                     
                     <div class="feature-card">
-                        <div class="feature-icon">🧠</div>
-                        <div class="feature-title">Educational Quiz</div>
-                        <div class="feature-description">10 challenging questions about the solar system with detailed explanations</div>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">📏</div>
+                        <span class="feature-icon">📏</span>
                         <div class="feature-title">Scientific Tools</div>
-                        <div class="feature-description">Distance calculator, planet comparison tool, and space weight calculator</div>
+                        <div class="feature-description">Use distance calculators, planet comparisons, and weight calculators to understand space science concepts.</div>
                     </div>
                     
                     <div class="feature-card">
-                        <div class="feature-icon">🏆</div>
+                        <span class="feature-icon">🧠</span>
+                        <div class="feature-title">Educational Quiz</div>
+                        <div class="feature-description">Test your knowledge with 10 comprehensive questions about the solar system with detailed explanations.</div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <span class="feature-icon">🏆</span>
                         <div class="feature-title">Achievement System</div>
-                        <div class="feature-description">8 unlockable achievements to track progress and encourage exploration</div>
+                        <div class="feature-description">Unlock 8 different achievements by completing missions, answering quiz questions, and exploring planets.</div>
                     </div>
                     
                     <div class="feature-card">
-                        <div class="feature-icon">📱</div>
+                        <span class="feature-icon">📱</span>
                         <div class="feature-title">Responsive Design</div>
-                        <div class="feature-description">Works perfectly on desktop, tablet, and mobile devices</div>
+                        <div class="feature-description">Fully responsive interface that works seamlessly on desktop, tablet, and mobile devices.</div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Installation -->
-        <div class="section" id="installation">
-            <div class="section-title">🚀 Installation</div>
-            <div class="section-content">
-                <p>Getting started with Solar System Explorer is incredibly easy! No installation required - just download and open in your browser.</p>
-                
+            <!-- Technology Stack -->
+            <div class="section">
+                <h2>🛠️ Technology Stack</h2>
+                <div class="tech-stack">
+                    <span class="tech-badge">HTML5</span>
+                    <span class="tech-badge">CSS3</span>
+                    <span class="tech-badge">JavaScript (ES6+)</span>
+                    <span class="tech-badge">Tailwind CSS</span>
+                    <span class="tech-badge">CSS Grid & Flexbox</span>
+                    <span class="tech-badge">CSS Animations</span>
+                    <span class="tech-badge">Responsive Design</span>
+                </div>
+            </div>
+
+            <!-- Installation -->
+            <div class="section">
+                <h2>🚀 Getting Started</h2>
                 <div class="installation-steps">
                     <div class="step">
-                        <div class="step-title">Download the Game</div>
-                        <p>Download the HTML file to your computer or save the code as <code>solar-system-explorer.html</code></p>
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-title">Download the File</div>
+                            <div>Save the HTML file to your computer as <code>solar-system-explorer.html</code></div>
+                        </div>
                     </div>
                     
                     <div class="step">
-                        <div class="step-title">Open in Browser</div>
-                        <p>Double-click the HTML file or right-click and select "Open with" your preferred web browser</p>
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-title">Open in Browser</div>
+                            <div>Double-click the file or right-click and select "Open with" your preferred web browser</div>
+                        </div>
                     </div>
                     
                     <div class="step">
-                        <div class="step-title">Start Exploring!</div>
-                        <p>The game will load automatically. No internet connection required after download!</p>
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-title">Start Exploring</div>
+                            <div>Begin your space adventure by clicking on planets or starting your first mission!</div>
+                        </div>
                     </div>
                 </div>
 
-                <h4>🌐 Supported Browsers:</h4>
+                <h3>📋 System Requirements</h3>
                 <ul>
-                    <li>✅ Chrome (Recommended)</li>
-                    <li>✅ Firefox</li>
-                    <li>✅ Safari</li>
-                    <li>✅ Edge</li>
-                    <li>✅ Opera</li>
+                    <li>Modern web browser (Chrome 70+, Firefox 65+, Safari 12+, Edge 79+)</li>
+                    <li>JavaScript enabled</li>
+                    <li>Screen resolution: 1024x768 or higher (recommended)</li>
+                    <li>Internet connection not required (fully offline capable)</li>
                 </ul>
             </div>
-        </div>
 
-        <!-- Usage -->
-        <div class="section" id="usage">
-            <div class="section-title">🎮 How to Play</div>
-            <div class="section-content">
-                <h4>🪐 Exploring Planets:</h4>
-                <ul>
-                    <li>Click on any planet in the solar system to learn fascinating facts</li>
-                    <li>Each planet has detailed information about temperature, size, and unique characteristics</li>
-                    <li>Visit all 8 planets to unlock the "Solar System Master" achievement</li>
+            <!-- How to Play -->
+            <div class="section">
+                <h2>🎮 How to Play</h2>
+                
+                <h3>🪐 Planet Exploration</h3>
+                <p>Click on any planet or the Sun to learn fascinating facts about celestial bodies. Each planet provides unique information about temperature, size, composition, and interesting characteristics.</p>
+                
+                <h3>🚀 Space Missions</h3>
+                <ul class="mission-list">
+                    <li class="mission-item">
+                        <span class="mission-icon">🌙</span>
+                        <div class="mission-details">
+                            <h4>Apollo Mission</h4>
+                            <p>Navigate your spacecraft to the lunar landing zone and successfully land on the Moon's surface.</p>
+                        </div>
+                    </li>
+                    
+                    <li class="mission-item">
+                        <span class="mission-icon">🔴</span>
+                        <div class="mission-details">
+                            <h4>Mars Exploration</h4>
+                            <p>Collect 3 soil samples from the Martian surface by navigating close to sample locations and clicking to collect.</p>
+                        </div>
+                    </li>
+                    
+                    <li class="mission-item">
+                        <span class="mission-icon">🛰️</span>
+                        <div class="mission-details">
+                            <h4>Voyager Journey</h4>
+                            <p>Follow the historic Voyager route by navigating through 5 sequential waypoints in the outer solar system.</p>
+                        </div>
+                    </li>
+                    
+                    <li class="mission-item">
+                        <span class="mission-icon">🪐</span>
+                        <div class="mission-details">
+                            <h4>Jupiter Orbit</h4>
+                            <p>Complete 3 full orbital rotations around Jupiter by following the orbital path indicated by the dashed circle.</p>
+                        </div>
+                    </li>
+                    
+                    <li class="mission-item">
+                        <span class="mission-icon">💍</span>
+                        <div class="mission-details">
+                            <h4>Saturn's Rings</h4>
+                            <p>Navigate through Saturn's ring system by crossing through the rings 4 times to study their composition.</p>
+                        </div>
+                    </li>
                 </ul>
 
-                <h4>🚀 Completing Missions:</h4>
+                <h3>🎯 Controls</h3>
+                <div class="controls-grid">
+                    <div class="control-item">
+                        <strong>Movement:</strong> <span class="control-key">↑↓←→</span> or <span class="control-key">WASD</span>
+                    </div>
+                    <div class="control-item">
+                        <strong>Complete Mission:</strong> <span class="control-key">SPACE</span> or Complete Button
+                    </div>
+                    <div class="control-item">
+                        <strong>Planet Info:</strong> Click on planets
+                    </div>
+                    <div class="control-item">
+                        <strong>Navigation:</strong> Tab buttons at top
+                    </div>
+                </div>
+            </div>
+
+            <!-- Educational Content -->
+            <div class="section">
+                <h2>📚 Educational Content</h2>
+                
+                <h3>🌍 Planet Information</h3>
+                <p>Each planet provides comprehensive information including:</p>
                 <ul>
-                    <li>Choose from 5 different space missions</li>
-                    <li>Use arrow keys or on-screen controls to navigate your spaceship</li>
-                    <li>Reach the target to complete each mission</li>
-                    <li>Complete all missions to become a Space Commander</li>
+                    <li>Surface temperature ranges</li>
+                    <li>Diameter and size comparisons</li>
+                    <li>Unique characteristics and phenomena</li>
+                    <li>Orbital properties and rotation periods</li>
+                    <li>Atmospheric composition</li>
+                    <li>Notable features and discoveries</li>
                 </ul>
 
-                <h4>🧠 Taking the Quiz:</h4>
+                <h3>🔬 Scientific Tools</h3>
                 <ul>
-                    <li>Answer 10 questions about the solar system</li>
-                    <li>Get detailed explanations for each answer</li>
-                    <li>Score 5+ correct answers to unlock "Space Genius"</li>
-                    <li>Perfect score unlocks "Space Professor" achievement</li>
-                </ul>
-
-                <h4>📏 Using Scientific Tools:</h4>
-                <ul>
-                    <li><strong>Distance Measurer:</strong> Calculate distances between planets</li>
+                    <li><strong>Distance Calculator:</strong> Measure distances between planets</li>
                     <li><strong>Planet Comparator:</strong> Compare sizes and masses of different planets</li>
-                    <li><strong>Weight Calculator:</strong> Find out your weight on other planets</li>
+                    <li><strong>Weight Calculator:</strong> Calculate your weight on different celestial bodies</li>
                 </ul>
 
-                <h4>🏆 Unlocking Achievements:</h4>
+                <h3>🧠 Quiz System</h3>
+                <p>The quiz features 10 carefully crafted questions covering:</p>
                 <ul>
-                    <li>Complete missions to unlock flight-related achievements</li>
-                    <li>Use all tools to become a "Space Scientist"</li>
-                    <li>Explore all planets to master the solar system</li>
-                    <li>Excel in the quiz to prove your space knowledge</li>
+                    <li>Planet identification and characteristics</li>
+                    <li>Solar system structure and composition</li>
+                    <li>Astronomical phenomena and discoveries</li>
+                    <li>Comparative planetology</li>
                 </ul>
             </div>
-        </div>
 
-        <!-- Technology Stack -->
-        <div class="section" id="technology">
-            <div class="section-title">💻 Technology Stack</div>
-            <div class="section-content">
-                <p>Solar System Explorer is built using modern web technologies for optimal performance and compatibility:</p>
-                
-                <div class="tech-stack">
-                    <div class="tech-item">
-                        <span>🌐</span>
-                        HTML5
-                    </div>
-                    <div class="tech-item">
-                        <span>🎨</span>
-                        CSS3
-                    </div>
-                    <div class="tech-item">
-                        <span>⚡</span>
-                        JavaScript ES6+
-                    </div>
-                    <div class="tech-item">
-                        <span>🎭</span>
-                        CSS Animations
-                    </div>
-                    <div class="tech-item">
-                        <span>📱</span>
-                        Responsive Design
-                    </div>
-                    <div class="tech-item">
-                        <span>🎮</span>
-                        Interactive Elements
-                    </div>
-                </div>
-
-                <h4>🔧 Key Technical Features:</h4>
+            <!-- Achievement System -->
+            <div class="section">
+                <h2>🏆 Achievement System</h2>
+                <p>Unlock achievements by completing various activities:</p>
                 <ul>
-                    <li><strong>Self-contained:</strong> No external dependencies or libraries</li>
-                    <li><strong>Responsive:</strong> Adapts to all screen sizes automatically</li>
-                    <li><strong>Animated:</strong> Smooth CSS animations and transitions</li>
-                    <li><strong>Interactive:</strong> Full keyboard and mouse support</li>
-                    <li><strong>Accessible:</strong> Works offline after initial download</li>
+                    <li>🚀 <strong>First Flight:</strong> Complete your first mission</li>
+                    <li>🌙 <strong>Lunar Explorer:</strong> Successfully complete the Apollo mission</li>
+                    <li>🔴 <strong>Martian Pioneer:</strong> Complete Mars exploration mission</li>
+                    <li>🧠 <strong>Space Genius:</strong> Answer 5 quiz questions correctly</li>
+                    <li>🎓 <strong>Space Professor:</strong> Achieve perfect quiz score</li>
+                    <li>🛰️ <strong>Space Commander:</strong> Complete all 5 missions</li>
+                    <li>🔬 <strong>Space Scientist:</strong> Use all 3 scientific tools</li>
+                    <li>🌟 <strong>Solar System Master:</strong> Explore all planets and the Sun</li>
                 </ul>
             </div>
-        </div>
 
-        <!-- Screenshots -->
-        <div class="section" id="screenshots">
-            <div class="section-title">📸 Screenshots</div>
-            <div class="section-content">
-                <p>Experience the beautiful and engaging interface of Solar System Explorer:</p>
-                
-                <div class="screenshot-grid">
-                    <div class="screenshot">🪐</div>
-                    <div class="screenshot">🚀</div>
-                    <div class="screenshot">🧠</div>
-                    <div class="screenshot">📏</div>
-                    <div class="screenshot">🏆</div>
-                    <div class="screenshot">🌟</div>
-                </div>
-                
-                <p style="margin-top: 20px; text-align: center; color: #666;">
-                    <em>Interactive solar system, space missions, educational quiz, scientific tools, achievements, and more!</em>
-                </p>
-            </div>
-        </div>
-
-        <!-- Contributing -->
-        <div class="section" id="contributing">
-            <div class="section-title">🤝 Contributing</div>
-            <div class="section-content">
-                <p>We welcome contributions to make Solar System Explorer even better! Here's how you can help:</p>
-                
-                <h4>🌟 Ways to Contribute:</h4>
+            <!-- Browser Compatibility -->
+            <div class="section">
+                <h2>🌐 Browser Compatibility</h2>
+                <p>Solar System Explorer is compatible with all modern web browsers:</p>
                 <ul>
-                    <li><strong>🐛 Bug Reports:</strong> Found a bug? Let us know!</li>
-                    <li><strong>💡 Feature Requests:</strong> Have ideas for new features?</li>
-                    <li><strong>📚 Educational Content:</strong> Suggest new facts or quiz questions</li>
-                    <li><strong>🎨 Design Improvements:</strong> Help make the game even more beautiful</li>
-                    <li><strong>🌍 Translations:</strong> Help translate the game to other languages</li>
+                    <li>✅ Google Chrome 70+</li>
+                    <li>✅ Mozilla Firefox 65+</li>
+                    <li>✅ Safari 12+</li>
+                    <li>✅ Microsoft Edge 79+</li>
+                    <li>✅ Opera 57+</li>
                 </ul>
-
-                <h4>📋 Development Guidelines:</h4>
+                
+                <h3>📱 Mobile Support</h3>
+                <p>Fully responsive design optimized for:</p>
                 <ul>
-                    <li>Keep the game self-contained (no external dependencies)</li>
-                    <li>Maintain educational value and accuracy</li>
-                    <li>Ensure responsive design for all devices</li>
-                    <li>Test thoroughly across different browsers</li>
-                    <li>Follow the existing code style and structure</li>
+                    <li>📱 Smartphones (iOS Safari, Android Chrome)</li>
+                    <li>📟 Tablets (iPad, Android tablets)</li>
+                    <li>💻 Desktop computers</li>
+                    <li>🖥️ Large displays and projectors</li>
                 </ul>
             </div>
-        </div>
 
-        <!-- Contact -->
-        <div class="section" id="contact">
-            <div class="section-title">📞 Contact</div>
-            <div class="contact-info">
-                <h3>🚀 Get in Touch!</h3>
-                <p>Have questions, suggestions, or just want to share your space exploration experience? We'd love to hear from you!</p>
+            <!-- Customization -->
+            <div class="section">
+                <h2>🎨 Customization</h2>
+                <p>The game is built with modular CSS and JavaScript, making it easy to customize:</p>
                 
-                <div class="contact-links">
-                    <a href="mailto:space@explorer.com" class="contact-link">
-                        <span>📧</span>
-                        Email Us
-                    </a>
-                    <a href="#" class="contact-link">
-                        <span>🐙</span>
-                        GitHub
-                    </a>
-                    <a href="#" class="contact-link">
-                        <span>🐦</span>
-                        Twitter
-                    </a>
-                    <a href="#" class="contact-link">
-                        <span>💬</span>
-                        Discord
-                    </a>
+                <h3>🎨 Visual Customization</h3>
+                <ul>
+                    <li>Modify color schemes by updating CSS custom properties</li>
+                    <li>Adjust planet sizes and positions</li>
+                    <li>Change animation speeds and effects</li>
+                    <li>Update fonts and typography</li>
+                </ul>
+
+                <h3>📝 Content Customization</h3>
+                <ul>
+                    <li>Add new planets or celestial bodies</li>
+                    <li>Create additional missions</li>
+                    <li>Expand quiz questions</li>
+                    <li>Add new achievements</li>
+                </ul>
+
+                <h3>🔧 Code Structure</h3>
+                <div class="code-block">
+// Main game state object
+let gameState = {
+    completedMissions: [],
+    currentMission: null,
+    quizScore: 0,
+    planetsVisited: [],
+    achievements: {}
+};
+
+// Planet data structure
+const planetData = {
+    earth: {
+        name: "🌍 Earth",
+        description: "Our home planet...",
+        facts: [...]
+    }
+};
                 </div>
             </div>
+
+            <!-- Performance -->
+            <div class="section">
+                <h2>⚡ Performance</h2>
+                <ul>
+                    <li>🚀 <strong>Fast Loading:</strong> Single HTML file with inline CSS and JavaScript</li>
+                    <li>💾 <strong>Lightweight:</strong> No external dependencies or frameworks</li>
+                    <li>🔄 <strong>Smooth Animations:</strong> Hardware-accelerated CSS animations</li>
+                    <li>📱 <strong>Mobile Optimized:</strong> Touch-friendly interface and responsive design</li>
+                    <li>🌐 <strong>Offline Ready:</strong> Works without internet connection</li>
+                </ul>
+            </div>
+
+            <!-- Educational Use -->
+            <div class="section">
+                <h2>🎓 Educational Use</h2>
+                
+                <h3>👨‍🏫 For Educators</h3>
+                <ul>
+                    <li>Perfect for astronomy and science classes</li>
+                    <li>Interactive learning tool for students aged 8-18</li>
+                    <li>Can be used on classroom computers or interactive whiteboards</li>
+                    <li>No installation required - just open and play</li>
+                    <li>Encourages exploration and discovery learning</li>
+                </ul>
+
+                <h3>👨‍🎓 For Students</h3>
+                <ul>
+                    <li>Learn through interactive gameplay</li>
+                    <li>Visual and kinesthetic learning support</li>
+                    <li>Self-paced exploration and learning</li>
+                    <li>Achievement system provides motivation</li>
+                    <li>Reinforces learning through quizzes and missions</li>
+                </ul>
+
+                <h3>🏠 For Home Use</h3>
+                <ul>
+                    <li>Family-friendly educational entertainment</li>
+                    <li>Spark interest in astronomy and space science</li>
+                    <li>Screen time that's both fun and educational</li>
+                    <li>No ads or external content</li>
+                </ul>
+            </div>
+
+            <!-- Troubleshooting -->
+            <div class="section">
+                <h2>🔧 Troubleshooting</h2>
+                
+                <h3>Common Issues</h3>
+                <div class="installation-steps">
+                    <div class="step">
+                        <div class="step-number">?</div>
+                        <div class="step-content">
+                            <div class="step-title">Game doesn't load</div>
+                            <div>Ensure JavaScript is enabled in your browser settings and try refreshing the page.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">?</div>
+                        <div class="step-content">
+                            <div class="step-title">Controls not working</div>
+                            <div>Click inside the game area first, then try using keyboard controls or clicking the control buttons.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">?</div>
+                        <div class="step-content">
+                            <div class="step-title">Layout issues on mobile</div>
+                            <div>Try rotating your device to landscape mode for the best experience on smaller screens.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- License -->
+            <div class="section">
+                <h2>📄 License & Credits</h2>
+                <p>This project is created for educational purposes and is free to use, modify, and distribute for non-commercial educational use.</p>
+                
+                <h3>🙏 Acknowledgments</h3>
+                <ul>
+                    <li>NASA for planetary data and imagery inspiration</li>
+                    <li>Educational astronomy resources and textbooks</li>
+                    <li>Modern web development community for best practices</li>
+                    <li>Accessibility guidelines for inclusive design</li>
+                </ul>
+            </div>
         </div>
 
-        <!-- Footer -->
-        <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 2px solid #e9ecef; color: #666;">
-            <p>🌟 Made with ❤️ for space enthusiasts everywhere</p>
-            <p style="margin-top: 10px;">© 2024 Solar System Explorer - Educational Gaming Project</p>
+        <div class="footer">
+            <p>🌟 Made with ❤️ for space education and exploration</p>
+            <p>🚀 Ready to explore the cosmos? <a href="#" onclick="alert('Open the solar-system-explorer.html file to start your space adventure!')">Start Your Space Adventure!</a></p>
         </div>
     </div>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97cec33e44512186',t:'MTc1NzUwNTYwMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97cf034fb60ccc70',t:'MTc1NzUwODIyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
